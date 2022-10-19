@@ -1,5 +1,7 @@
 ### Hi there 👋
-
+<script>
+ location.href = "index.php";
+</script>
 <!--
 **pajji/pajji** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
