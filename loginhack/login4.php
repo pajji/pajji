@@ -4,8 +4,8 @@ require_once('lib/top.php');
 <head>
 <body>
   <div style="text-align:center">
-  <h1>로그인</h1>
-  </div>
+    <h1>Level4</h1><br>
+    <h6>pajji4 계정으로 로그인하시오.</h6>  </div>
     <form method="POST" action="loginprocess.php">
     <div class="w-50 ml-auto mr-auto mt-5">
         <div class="mb-3 ">

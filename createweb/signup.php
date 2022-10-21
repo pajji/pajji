@@ -1,14 +1,6 @@
 <?php
 require_once('lib/top.php');
 ?>
-  <script language="javascript">
-  window.onload = function(){
-  document.getElementById("newwin").
-    function idcheckpop() {
-      window.open("idcheck.php", "아이디 중복체크", "width=400, height=300, left=100, top=50");
-    }
-  }
-  </script>
 </head>
 <body>
   <div style="text-align:center">
@@ -19,15 +11,9 @@ require_once('lib/top.php');
         <div class="mb-3 ">
           <input type="username" name="username" class="form-control" id="username" placeholder="아이디 입력">
         </div>
-
-        <div>
-          <a href=""><button name="idcheck" onclick="idcheckpop()">아이디 중복체크</a></button>
-        </div>
-
         <div class="mb-3 ">
           <input name="password" type="password" class="form-control" id="password" placeholder="비밀번호 입력">
         </div>
-
         <div class="mb-3 ">
           <input type="password" class="form-control" id="password-check" placeholder="비밀번호 재확인">
         </div>
