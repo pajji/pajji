@@ -17,9 +17,9 @@ foreach($row as $key => $r){
 $passwordResult = password_verify($password, $hashedPassword);
 if ($passwordResult === true) {
     session_start();
-    $_SESSION['userId'] = $row['username'];
+    $_SESSION['username'] = $row['username'];
     print_r($_SESSION);
-    echo $_SESSION['userId'];
+    echo $_SESSION['username'];
 ?>
     <script>
         alert("로그인에 성공하였습니다.")

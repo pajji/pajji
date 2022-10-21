@@ -9,7 +9,7 @@ require_once('lib/top.php');
     <form action="signupProcess.php" method="POST" id="signup-form">
         <div class="w-50 ml-auto mr-auto mt-5">
         <div class="mb-3 ">
-          <input type="text" name="userid" id="userid" placeholder="아이디입력">
+          <input type="text" name="username" id="username" placeholder="아이디입력">
           <input type="button" id="checkIdBtn" value="중복확인" onclick="checkId()">
           <p id="result">&nbsp;</p>
         </div>
