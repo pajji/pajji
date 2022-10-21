@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect("127.0.0.1", "root", "p97j01w20*", "login", 3306);
+$conn = mysqli_connect("localhost", "root", "p97j01w20*", "login", 3306);
 
 $username = $_POST['username'];
 $password = $_POST['password'];
@@ -28,9 +28,10 @@ if ($passwordResult === true) {
 <?php
 } else {
 ?>
-    <script>
-        alert("아이디 또는 비밀번호를 확인해주시기 바랍니다.");
-    </script>
+  <script>
+    alert("아이디 또는 비밀번호를 확인해주시기 바랍니다.")
+    location.href = "login1.php";
+  </script>
 <?php
 }
 ?>

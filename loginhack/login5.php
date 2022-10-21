@@ -5,8 +5,9 @@ require_once('lib/top.php');
 <body>
   <div style="text-align:center">
     <h1>Level5</h1><br>
-    <h6>pajji5 계정으로 로그인하시오.</h6>  </div>
-    <form method="POST" action="loginprocess.php">
+    <h6>pajji5 계정으로 로그인하시오.</h6>
+  </div>
+    <form method="POST" action="login5process.php">
     <div class="w-50 ml-auto mr-auto mt-5">
         <div class="mb-3 ">
             <input name="username" type="text" class="form-control" id="exampleFormControlInput1" placeholder="아이디">

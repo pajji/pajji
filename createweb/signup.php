@@ -27,7 +27,6 @@ require_once('lib/top.php');
         const passwordCheck = document.querySelector("#password-check");
         signupButton.addEventListener("click", function(e) {
             if(password.value&& password.value === passwordCheck.value){
-
             signupForm.submit();
             }else{
                 alert("비밀번호가 서로 일치하지 않습니다");
