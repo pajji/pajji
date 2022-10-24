@@ -4,8 +4,10 @@
   $username = $_POST['username'];
   $password = $_POST['password'];
 
-  $sql = "SELECT * FROM users where username = '$username' and password = '$password';";
-    if($result = mysqli_fetch_array(mysqli_query($conn, $sql))){
+  $sql = "SELECT * FROM users where username = '$username';";
+  $result = mysqli_fetch_array(mysqli_query($conn, $sql));
+
+    if($result['password'] == $password){
       session_start();
       $_SESSION['username'];
       print_r($_SESSION);
@@ -20,7 +22,7 @@
   ?>
       <script>
           alert("아이디 또는 비밀번호를 확인해주시기 바랍니다.");
-          location.href = "login1.php";
+          location.href = "login2.php";
       </script>
   <?php
   }

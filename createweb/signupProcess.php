@@ -2,14 +2,8 @@
 $conn = mysqli_connect("localhost","root","p97j01w20*","login",3306);
 $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
 echo $hashedPassword;
-$sql = "
-    INSERT INTO users
-    (username, password, created)
-    VALUES(
-      '{$_POST['username']}',
-      '{$hashedPassword}',
-      NOW()
-      )";
+$sql = "INSERT INTO users (username, password, created)  
+VALUES('{$_POST['username']}', '{$hashedPassword}', NOW())";
 $result = mysqli_query($conn, $sql);
 
 if ($result === false) {

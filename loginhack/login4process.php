@@ -17,9 +17,9 @@ foreach($row as $key => $r){
 $passwordResult = password_verify($password, $hashedPassword);
 if ($passwordResult === true) {
     session_start();
-    $_SESSION['userId'] = $row['username'];
+    $_SESSION['username'] = $row['username'];
     print_r($_SESSION);
-    echo $_SESSION['userId'];
+    echo $_SESSION['username'];
 ?>
     <script>
         alert("로그인에 성공하였습니다.")
@@ -28,10 +28,10 @@ if ($passwordResult === true) {
 <?php
 } else {
 ?>
-  <script>
-    alert("아이디 또는 비밀번호를 확인해주시기 바랍니다.")
-    location.href = "login4.php";
-  </script>
+    <script>
+        alert("아이디 또는 비밀번호를 확인해주시기 바랍니다.");
+        location.href = "login4.php";
+    </script>
 <?php
 }
 ?>
