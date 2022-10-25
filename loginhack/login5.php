@@ -1,7 +1,7 @@
 <?php
 require_once('lib/top.php');
 ?>
-<head>
+</head>
 <body>
   <div style="text-align:center">
     <h1>Level5</h1><br>

@@ -1,17 +1,15 @@
 <?php
 $conn = mysqli_connect("localhost", "root", "p97j01w20*", "login", 3306);
 
-$username = $_POST['username'];
-$password = $_POST['password'];
+$user_id = $_POST['user_id'];
+$user_pw = $_POST['user_pw'];
 
-$sql = "SELECT * FROM users where username='$username' and password='$password'";
-$result = mysqli_query($conn, $sql);
-$row = mysqli_fetch_array($result)
-
-  if ($row === $password) {
-      $_SESSION['username'] = $row['username'];
-      print_r($_SESSION);
-      echo $_SESSION['username'];
+$sql = "SELECT * FROM users where username='$user_id' and password=MD5('$user_pw')";
+if($result = mysqli_fetch_array(mysqli_query($conn, $sql))){
+  session_start();
+  $_SESSION['user_id'];
+  print_r($_SESSION);
+  echo $_SESSION['user_id'];
 ?>
       <script>
         alert("로그인에 성공하였습니다.")

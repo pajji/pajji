@@ -1,7 +1,7 @@
 <?php
 require_once('lib/top.php');
 ?>
-<head>
+</head>
 <body>
   <div style="text-align:center">
     <h1>Level4</h1><br>
@@ -10,10 +10,10 @@ require_once('lib/top.php');
     <form method="POST" action="login4process.php">
     <div class="w-50 ml-auto mr-auto mt-5">
         <div class="mb-3 ">
-            <input name="username" type="text" class="form-control" id="exampleFormControlInput1" placeholder="아이디">
+            <input name="user_id" type="text"  class="form-control" id="exampleFormControlInput1" placeholder="아이디">
         </div>
         <div class="mb-3 ">
-            <input name="password" type="password" class="form-control" id="exampleFormControlInput1" placeholder="비밀번호">
+            <input name="user_pw" type="password" class="form-control" id="exampleFormControlInput1" placeholder="비밀번호">
         </div>
         <button type="submit" class="btn btn-primary mb-3">로그인</button>
     </div>

@@ -22,7 +22,7 @@ $result = mysqli_fetch_array(mysqli_query($conn,$sql));
 ?>
     <script>
         alert("아이디 또는 비밀번호를 확인해주시기 바랍니다.");
-        location.href = "login4.php";
+        location.href = "login999.php";
     </script>
 <?php
 }
