@@ -10,5 +10,5 @@
   <div align="center"> 
   <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=pajji&layout=compact">
   <img src="https://github-readme-stats.vercel.app/api?username=pajji&show_icons=true"><br>
-  <a href="https://blog.naver.com/p970120">My Blog</a>
+  <a href="https://blog.naver.com/p970120" target="_blank">My Blog</a>
 </div>
