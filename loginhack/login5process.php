@@ -4,8 +4,8 @@
   $username = $_POST['username'];
   $password = $_POST['password'];
 
-  $sql = "SELECT * FROM users where username = '$username'
-  and password = '$password';";
+  $sql = "SELECT * FROM users where username = '$username' and
+  password = '$password';";
     if($result = mysqli_fetch_array(mysqli_query($conn, $sql))){
         session_start();
         $_SESSION['userId'] = $row['username'];

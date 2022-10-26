@@ -7,7 +7,7 @@ VALUES('{$_POST['username']}', '{$hashedPassword}', NOW())";
 $result = mysqli_query($conn, $sql);
 
 if ($result === false) {
-    echo "저장에 문제가 생겼습니다. 관리자에게 문의해주세요.";
+    echo "회원가입에 문제가 생겼습니다. 관리자에게 문의해주세요.";
     echo (mysqli_error($conn));
 } else {
 ?>

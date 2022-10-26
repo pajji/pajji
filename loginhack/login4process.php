@@ -7,7 +7,7 @@ $user_pw = $_POST['user_pw'];
 $sql = "SELECT * FROM users where username='$user_id'";
 $result = mysqli_fetch_array(mysqli_query($conn,$sql));
 
-  if($result['password'] === MD5($user_pw)){
+  if($result['password'] === MD5($user_pw)) {
     session_start();
     $_SESSION['user_id'] = $row['user_id'];
     print_r($_SESSION);
