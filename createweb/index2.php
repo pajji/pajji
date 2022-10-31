@@ -16,7 +16,6 @@
                 <th width="500">제목</th>
                 <th width="120">글쓴이</th>
                 <th width="100">작성일</th>
-                <th width="100">조회수</th>
             </tr>
         </thead>
         <?php
@@ -32,16 +31,25 @@
                 $title=str_replace($board["title"],mb_substr($board["title"],0,30,"utf-8")."...",$board["title"]);
               }
         ?>
-      <tbody>
-        <tr>
-          <td width="70"><?php echo $board['idx']; ?></td>
-          <td width="500"><a href="/page/board/read.php?idx=<?php echo $board["idx"];?>"><?php echo $title;?></a></td>
-          <td width="120"><?php echo $board['name']?></td>
-          <td width="100"><?php echo $board['date']?></td>
-          <td width="100"><?php echo $board['hit']; ?></td>
-        </tr>
-      </tbody>
-      <?php } ?>
+        <tbody>
+            <tr>
+              <td width="70"><?php echo $board['idx']; ?></td>
+              <td width="500"><?php
+                $lockimg = "<img src='/img/lock.png' alt='lock' title='lock' with='20' height='20' />";
+                if($board['lock_post']=="1")
+                  { ?>
+                    <a href='/pajji/createweb/ck_read.php?idx=<?php echo $board["idx"];?>'>
+                      <?php echo $title, $lockimg;
+                    }else{
+                      ?>
+                <a href='/page/board/read.php?idx=<?php echo $board["idx"]; ?>'><?php echo $title; }?></a></td>
+              <td width="120"><?php echo $board['name']?></td>
+              <td width="100"><?php echo $board['date']?></td>
+            </tr>
+          </tbody>
+        <?php
+        }
+        ?>
     </table>
     <div id="write_btn">
       <a href="/pajji/createweb/write.php"><button>글쓰기</button></a>
