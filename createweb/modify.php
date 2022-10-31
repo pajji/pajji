@@ -1,6 +1,6 @@
 <!--- 게시글 수정 -->
 <?php
-	include $_SERVER['DOCUMENT_ROOT']."/db.php";
+	include $_SERVER['DOCUMENT_ROOT']."/pajji/createweb/db.php";
 
 	$bno = $_GET['idx'];
 	$sql = mq("select * from board where idx='$bno';");
@@ -14,7 +14,7 @@
 </head>
 <body>
     <div id="board_write">
-        <h1><a href="/">자유게시판</a></h1>
+        <h1><a href="index2.php">자유게시판</a></h1>
         <h4>글을 수정합니다.</h4>
             <div id="write_area">
                 <form action="modify_ok.php?idx=<?php echo $bno; ?>" method="post">

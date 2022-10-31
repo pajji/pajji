@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>게시판</title>
 <link rel="stylesheet" type="text/css" href="/pajji/createweb/css/style.css" />
+<h1><a href="index2.php">홈으로</a></h1>
 </head>
 <body>
 <div id="board_area">
@@ -42,7 +43,7 @@
                       <?php echo $title, $lockimg;
                     }else{
                       ?>
-                <a href='/page/board/read.php?idx=<?php echo $board["idx"]; ?>'><?php echo $title; }?></a></td>
+                <a href='/pajji/createweb/read.php?idx=<?php echo $board["idx"]; ?>'><?php echo $title; }?></a></td>
               <td width="120"><?php echo $board['name']?></td>
               <td width="100"><?php echo $board['date']?></td>
             </tr>

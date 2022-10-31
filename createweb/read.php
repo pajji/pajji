@@ -10,13 +10,12 @@
 <script type="text/javascript" src="/pajji/createweb/js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="/pajji/createweb/js/jquery-ui.js"></script>
 <script type="text/javascript" src="/pajji/createweb/js/common.js"></script>
+<h1><a href="index2.php">홈으로</a></h1>
 </head>
 <body>
 	<?php
 		$bno = $_GET['idx']; /* bno함수에 idx값을 받아와 넣음*/
 		$hit = mysqli_fetch_array(mq("select * from board where idx ='".$bno."'"));
-		$hit = $hit['hit'] + 1;
-		$fet = mq("update board set hit = '".$hit."' where idx = '".$bno."'");
 		$sql = mq("select * from board where idx='".$bno."'"); /* 받아온 idx값을 선택 */
 		$board = $sql->fetch_array();
 	?>
@@ -24,7 +23,7 @@
 <div id="board_read">
 	<h2><?php echo $board['title']; ?></h2>
 		<div id="user_info">
-			<?php echo $board['name']; ?> <?php echo $board['date']; ?> 조회:<?php echo $board['hit']; ?>
+			<?php echo $board['name']; ?> <?php echo $board['date']; ?>
 				<div id="bo_line"></div>
 			</div>
 			<div id="bo_content">
