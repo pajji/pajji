@@ -6,7 +6,7 @@
 </head>
 <body>
     <div id="board_write">
-        <h1><a href="/">자유게시판</a></h1>
+        <h1><a href="/pajji/createweb/index2.php">자유게시판</a></h1>
         <h4>글을 작성하는 공간입니다.</h4>
             <div id="write_area">
                 <form action="write_ok.php" method="post">

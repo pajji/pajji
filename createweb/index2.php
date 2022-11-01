@@ -10,12 +10,24 @@
 <div id="board_area">
   <h1>자유게시판</h1>
   <h4>자유롭게 글을 쓸 수 있는 게시판입니다.</h4>
+  <!-- 게시물 검색 -->
+  <div id="search_box">
+    <form action="/pajji/createweb/search_result.php" method="get">
+      <select name="catgo">
+        <option value="제목">제목</option>
+        <option value="작성자">작성자</option>
+        <option value="내용">내용</option>
+      </select>
+      <input type="text" name="search" size="40" required="required" /> <button>검색</button>
+    </form>
+    </div>
+    <!-- 게시판 기본 -->
     <table class="list-table">
       <thead>
           <tr>
-              <th width="70">번호</th>
+              <th width="70">구분</th>
                 <th width="500">제목</th>
-                <th width="120">글쓴이</th>
+                <th width="120">작성자</th>
                 <th width="100">작성일</th>
             </tr>
         </thead>
@@ -47,12 +59,23 @@
               <?php echo $title, $lockimg;
                   }else{
               ?>
+              <!--- 추가부분 18.08.01 --->
+              <?php
+                $boardtime = $board['date']; //$boardtime변수에 board['date']값을 넣음
+                $timenow = date("Y-m-d"); //$timenow변수에 현재 시간 Y-M-D를 넣음
+
+                if($boardtime==$timenow){
+                  $img = "<img src='/pajji/createweb/img/new.png' alt='new' title='new' />";
+                }else{
+                  $img ="";
+                }
+                ?>
               <!-- 게시물 읽기, 경로, idx는 게시물 번호 -->
-              <a href='/pajji/createweb/read.php?idx=<?php echo $board["idx"]; ?>'><?php echo $title; }?></a></td>
-              <td width="120"><?php echo $board['name']?></td>
-              <td width="100"><?php echo $board['date']?></td>
-            </tr>
-          </tbody>
+              <a href='/pajji/createweb/read.php?idx=<?php echo $board["idx"]; ?>'><?php echo $title; }?></span><span class="re_ct">[<?php echo $rep_count;?>]<?php echo $img; ?> </span></a></td>
+                <td width="120"><?php echo $board['name']?></td>
+                <td width="100"><?php echo $board['date']?></td>
+              </tr>
+            </tbody>
         <?php
         }
         ?>
