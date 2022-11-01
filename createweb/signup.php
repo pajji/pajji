@@ -1,6 +1,12 @@
 <?php
 require_once('lib/top.php');
 ?>
+<script>
+	function address(){
+		url = "address.php";
+		window.open(url,"addr",'width=500,height=400, scrollbars=no, resizable=no');
+	}
+</script>
 </head>
 <body>
   <div style="text-align:center">
@@ -19,6 +25,10 @@ require_once('lib/top.php');
         <div class="mb-3 ">
           <input type="password" class="form-control" id="password-check" placeholder="비밀번호 재확인">
         </div>
+        <div class="mb-3 ">
+          <input class=textform type="text" name="join_addr" id="addr" onclick="address();" placeholder="주소를 검색해주세요." required></p>
+        </div>
+        <div>
           <button type="button" id="signup-button" class="btn btn-primary mb-3">회원가입</button>
         </div>
     </form>
