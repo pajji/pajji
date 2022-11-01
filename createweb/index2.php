@@ -1,4 +1,5 @@
 <?php include  $_SERVER['DOCUMENT_ROOT']."/pajji/createweb/db.php"; ?>
+<!-- db.php에서 sql 접속 및 정보를 가져온다 -->
 <!doctype html>
 <head>
 <meta charset="UTF-8">
@@ -36,13 +37,14 @@
             <tr>
               <td width="70"><?php echo $board['idx']; ?></td>
               <td width="500"><?php
-                $lockimg = "<img src='/img/lock.png' alt='lock' title='lock' with='20' height='20' />";
+                $lockimg = "<img src='/pajji/createweb//img/lock.png' alt='lock' title='lock' with='20' height='20' />";
                 if($board['lock_post']=="1")
                   { ?>
                     <a href='/pajji/createweb/ck_read.php?idx=<?php echo $board["idx"];?>'>
                       <?php echo $title, $lockimg;
                     }else{
                       ?>
+<!-- 게시물 읽기, 경로, idx는 게시물 번호 -->
                 <a href='/pajji/createweb/read.php?idx=<?php echo $board["idx"]; ?>'><?php echo $title; }?></a></td>
               <td width="120"><?php echo $board['name']?></td>
               <td width="100"><?php echo $board['date']?></td>
@@ -52,6 +54,7 @@
         }
         ?>
     </table>
+<!-- 글쓰기 버튼 -->
     <div id="write_btn">
       <a href="/pajji/createweb/write.php"><button>글쓰기</button></a>
     </div>
