@@ -1,5 +1,4 @@
-<?php include  $_SERVER['DOCUMENT_ROOT']."/pajji/createweb/db.php"; ?>
-<!-- db.php에서 sql 접속 및 정보를 가져온다 -->
+<?php require_once('lib/top2.php'); ?>
 <!doctype html>
 <head>
 <meta charset="UTF-8">
@@ -32,20 +31,24 @@
                 //title이 30을 넘어서면 ...표시
                 $title=str_replace($board["title"],mb_substr($board["title"],0,30,"utf-8")."...",$board["title"]);
               }
+              //댓글 수 카운트
+              $sql2 = mq("select * from reply where con_num='".$board['idx']."'"); //reply테이블에서 con_num이 board의 idx와 같은 것을 선택
+              $rep_count = mysqli_num_rows($sql2); //num_rows로 정수형태로 출력
         ?>
         <tbody>
             <tr>
               <td width="70"><?php echo $board['idx']; ?></td>
-              <td width="500"><?php
-                $lockimg = "<img src='/pajji/createweb//img/lock.png' alt='lock' title='lock' with='20' height='20' />";
-                if($board['lock_post']=="1")
-                  { ?>
-                    <a href='/pajji/createweb/ck_read.php?idx=<?php echo $board["idx"];?>'>
-                      <?php echo $title, $lockimg;
-                    }else{
-                      ?>
-<!-- 게시물 읽기, 경로, idx는 게시물 번호 -->
-                <a href='/pajji/createweb/read.php?idx=<?php echo $board["idx"]; ?>'><?php echo $title; }?></a></td>
+              <td width="500">
+              <?php
+                $lockimg = "<img src='/pajji/createweb/img/lock.png' alt='lock' title='lock' with='20' height='20' />";
+                  if($board['lock_post']=="1"){
+              ?>
+                  <a href='/pajji/createweb/ck_read.php?idx=<?php echo $board["idx"];?>'>
+              <?php echo $title, $lockimg;
+                  }else{
+              ?>
+              <!-- 게시물 읽기, 경로, idx는 게시물 번호 -->
+              <a href='/pajji/createweb/read.php?idx=<?php echo $board["idx"]; ?>'><?php echo $title; }?></a></td>
               <td width="120"><?php echo $board['name']?></td>
               <td width="100"><?php echo $board['date']?></td>
             </tr>
@@ -54,7 +57,7 @@
         }
         ?>
     </table>
-<!-- 글쓰기 버튼 -->
+    <!-- 글쓰기 버튼 -->
     <div id="write_btn">
       <a href="/pajji/createweb/write.php"><button>글쓰기</button></a>
     </div>

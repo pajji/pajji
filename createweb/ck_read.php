@@ -1,6 +1,5 @@
-<?php
-include $_SERVER['DOCUMENT_ROOT']."/pajji/createweb/db.php"; /* db load */
-?>
+<?php require_once('lib/top2.php'); ?>
+
 <link rel="stylesheet" type="text/css" href="/css/jquery-ui.css" />
 <script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="/js/jquery-ui.js"></script>

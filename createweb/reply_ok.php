@@ -1,5 +1,4 @@
-<?php
-	include $_SERVER['DOCUMENT_ROOT']."/pajji/createweb/db.php";
+<?php require_once('lib/top2.php');
 
     $bno = $_GET['idx'];
     $userpw = password_hash($_POST['dat_pw'], PASSWORD_DEFAULT);

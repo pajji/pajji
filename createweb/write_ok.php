@@ -1,6 +1,5 @@
 <?php
-
-include $_SERVER['DOCUMENT_ROOT']."/pajji/createweb/db.php";
+require_once('lib/top2.php');
 
 //각 변수에 write.php에서 input name값들을 저장한다
 $username = $_POST['name'];

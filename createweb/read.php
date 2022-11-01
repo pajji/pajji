@@ -1,6 +1,4 @@
-<?php
-	include $_SERVER['DOCUMENT_ROOT']."/pajji/createweb/db.php"; /* db load */
-?>
+<?php require_once('lib/top2.php'); ?>
 <!doctype html>
 <head>
 <meta charset="UTF-8">
