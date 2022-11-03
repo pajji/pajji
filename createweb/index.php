@@ -9,7 +9,7 @@ require_once('lib/top.php');
         if (isset($_SESSION['username'])) {
             echo "{$_SESSION['username']}님 환영합니다.";
         ?>
-            <li class="nav-item d-flex align-items-center" onclick="logout()">로그아웃</li>
+          <li class="nav-item d-flex align-items-center" onclick="logout()">&nbsp; 로그아웃</li>
         <?php
         } else {
         ?>

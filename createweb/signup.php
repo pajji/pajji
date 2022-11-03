@@ -1,6 +1,22 @@
 <?php
 require_once('lib/top.php');
 ?>
+<script>
+	function address(){
+		url = "address.php";
+		window.open(url,"addr",'width=500,height=400, scrollbars=no, resizable=no');
+	}
+	function checkid(){
+	var username = document.getElementById("username").value;
+	if(username)
+	{
+		url = "/pajji/createweb/check.php?username="+username;
+			window.open(url,"chkid","width=300,height=100");
+		}else{
+			alert("아이디를 입력하세요");
+		}
+	}
+</script>
 </head>
 <body>
   <div style="text-align:center">
@@ -10,8 +26,8 @@ require_once('lib/top.php');
         <div class="w-50 ml-auto mr-auto mt-5">
         <div class="mb-3 ">
           <input type="text" name="username" id="username" placeholder="아이디입력">
-          <input type="button" id="checkIdBtn" value="중복확인" onclick="checkId()">
-          <p id="result">&nbsp;</p>
+					<input type="button" value="중복검사" onclick="checkid();" />
+					<input type="hidden" value="0" name="chs" />
         </div>
         <div class="mb-3 ">
           <input name="password" type="password" class="form-control" id="password" placeholder="비밀번호 입력">
@@ -19,6 +35,10 @@ require_once('lib/top.php');
         <div class="mb-3 ">
           <input type="password" class="form-control" id="password-check" placeholder="비밀번호 재확인">
         </div>
+        <div class="mb-3 ">
+          <input class=textform type="text" name="join_addr" id="addr" onclick="address();" placeholder="주소를 검색해주세요." required></p>
+        </div>
+        <div>
           <button type="button" id="signup-button" class="btn btn-primary mb-3">회원가입</button>
         </div>
     </form>
