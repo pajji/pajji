@@ -1,17 +1,18 @@
 <?php
-require_once('lib/top2.php');
+	include $_SERVER['DOCUMENT_ROOT']."/pajji/board/db.php"; /* db load */
 ?>
 <!doctype html>
 <head>
 <meta charset="UTF-8">
 <title>게시판</title>
-<link rel="stylesheet" type="text/css" href="/pajji/createweb/css/jquery-ui.css" />
-<link rel="stylesheet" type="text/css" href="/pajji/createweb/css/style.css" />
-<script type="text/javascript" src="/pajji/createweb/js/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="/pajji/createweb/js/jquery-ui.js"></script>
-<script type="text/javascript" src="/pajji/createweb/js/common.js"></script>
+<link rel="stylesheet" type="text/css" href="/pajji/board/css/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="/pajji/board/css/style.css" />
+<script type="text/javascript" src="/pajji/board/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="/pajji/board/js/jquery-ui.js"></script>
+<script type="text/javascript" src="/pajji/board/js/common.js"></script>
 </head>
 <body>
+	<h1><a href="/pajji/board/index.php">자유게시판</a></h1>
 	<?php
 		$bno = $_GET['idx']; /* bno함수에 idx값을 받아와 넣음*/
 		$hit = mysqli_fetch_array(mq("select * from board where idx ='".$bno."'"));
@@ -28,7 +29,7 @@ require_once('lib/top2.php');
 				<div id="bo_line"></div>
 			</div>
 			<div>
-				파일 : <a href="pajji/createweb/upload/<?php echo $board['file'];?>" download><?php echo $board['file']; ?></a>
+				파일 : <a href="../../upload/<?php echo $board['file'];?>" download><?php echo $board['file']; ?></a>
 			</div>
 			<div id="bo_content">
 				<?php echo nl2br("$board[content]"); ?>
@@ -36,13 +37,13 @@ require_once('lib/top2.php');
 	<!-- 목록, 수정, 삭제 -->
 	<div id="bo_ser">
 		<ul>
-			<li><a href="index2.php">[목록으로]</a></li>
+			<li><a href="/pajji/board/index.php">[목록으로]</a></li>
 			<li><a href="modify.php?idx=<?php echo $board['idx']; ?>">[수정]</a></li>
 			<li><a href="delete.php?idx=<?php echo $board['idx']; ?>">[삭제]</a></li>
 		</ul>
 	</div>
-</div>
-<!--- 댓글 불러오기 -->
+
+	<!--- 댓글 불러오기 -->
 <div class="reply_view">
 	<h3>댓글목록</h3>
 		<?php
@@ -77,15 +78,14 @@ require_once('lib/top2.php');
 	<?php } ?>
 
 	<!--- 댓글 입력 폼 -->
-	<div class="dap_ins">
-		<form action="reply_ok.php?idx=<?php echo $bno; ?>" method="post">
+<div class="dap_ins">
+			<input type="hidden" name="bno" class="bno" value="<?php echo $bno; ?>">
 			<input type="text" name="dat_user" id="dat_user" class="dat_user" size="15" placeholder="아이디">
 			<input type="password" name="dat_pw" id="dat_pw" class="dat_pw" size="15" placeholder="비밀번호">
 			<div style="margin-top:10px; ">
 				<textarea name="content" class="reply_content" id="re_content" ></textarea>
 				<button id="rep_bt" class="re_bt">댓글</button>
 			</div>
-		</form>
 	</div>
 </div><!--- 댓글 불러오기 끝 -->
 <div id="foot_box"></div>

@@ -25,10 +25,12 @@ ul li {
 /* 게시판 목록 */
 #board_area {
 	width: 900px;
-	position: relative;
+	position: relative;	
 }
 .list-table {
 	margin-top: 40px;
+	position: relative;
+	
 }
 .list-table thead th{
 	height:40px;
@@ -40,13 +42,39 @@ ul li {
 .list-table tbody td{
 	text-align:center;
 	padding:10px 0;
-	border-bottom:1px solid #CCC; height:20px;
-	font-size: 14px
+	border-bottom:1px solid	 #CCC; height:20px;
+	font-size: 14px 
 }
 #write_btn {
 	position: absolute;
-	margin-top:20px;
+	margin-top: -20px;
 	right: 0;
+}
+.re_ct {
+	font-weight:bold;
+	color:blue;
+}
+#page_num {
+	font-size: 14px;
+	text-align: center;
+	margin-top: 30px;
+}
+#page_num a {
+	margin-left: 15px; 
+}
+.fo_re {
+	font-weight: bold;
+	color:red;
+	margin-left: 15px; 
+}
+#search_box {
+	margin-top:30px;
+	text-align: center;
+}
+#search_box2 {
+	text-align: center;
+	margin-top: 30px;
+	
 }
 /* 게시판 글쓰기 */
 #board_write {
@@ -105,6 +133,13 @@ ul li {
 	width:100px;
 	height:30px;
 }
+#in_lock {
+	margin-top:10px;
+}
+#in_file {
+	margin-top:10px;
+}
+
 /* 게시판 read */
 #board_read {
 	width:900px;
@@ -119,9 +154,10 @@ ul li {
 	margin-left:10px;
 }
 #bo_line {
-	width:880px;
+	width:900px;
 	height:2px;
 	background: gray;
+	margin-left: 0;
 	margin-top:20px;
 }
 #bo_content {
@@ -131,16 +167,17 @@ ul li {
 	font-size:14px;
 	color:#333;
 	position: absolute;
-	right: 0;
+	right: 20px;
 }
 #bo_ser > ul > li {
 	float:left;
 	margin-left:10px;
 }
+
 /* 댓글 */
 .reply_view {
 	width:900px;
-	margin-top:100px;
+	margin-top:100px; 
 	word-break:break-all;
 }
 .dap_lo {
@@ -160,7 +197,7 @@ ul li {
 }
 .dat_delete {
 	display: none;
-}
+}	
 .dat_edit {
 	display:none;
 }
@@ -183,7 +220,7 @@ ul li {
 }
 #re_content {
 	width:700px;
-	height: 56px;
+	height: 56px; 
 }
 .dap_ins {
 	margin-top:50px;
@@ -193,35 +230,8 @@ ul li {
 	width:100px;
 	height:56px;
 	font-size:16px;
-	margin-left: 10px;
+	margin-left: 10px; 
 }
 #foot_box {
-	height: 50px;
-}
-.fo_re {
-	font-weight: bold;
-	color:red;
-	margin-left: 15px;
-}
-#search_box {
-	margin-top:30px;
-	text-align: right;
-}
-#search_box2 {
-	text-align: center;
-	margin-top: 30px;
-}
-#page_num {
-	font-size: 14px;
-	margin-left: 260px;
-	margin-top:30px;
-}
-#page_num ul li {
-	float: left;
-	margin-left: 10px;
-	text-align: center;
-}
-.fo_re {
-	font-weight: bold;
-	color:red;
+	height: 50px; 
 }
