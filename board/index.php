@@ -14,10 +14,7 @@
     <table class="list-table">
       <thead>
           <tr>
-
             <?php
-
-
               /* 2022.11.06 컬럼정렬 추가 */
               //GET sortType이 있는지 체크
               if(isset($_GET['sortType'])){
@@ -34,7 +31,6 @@
                 $sortType = 'desc';
                 $sortText = '▼';
               }
-
             ?>
               <th width="70"><a onclick="b_sort('idx','<?php echo $sortType ?>')" href="#">번호<span style="color:red;">
                 <?php
@@ -100,8 +96,8 @@
 
                   $sql = mq("select * from board");
                   $row_num = mysqli_num_rows($sql); //게시판 총 레코드 수
-                  $list = 5; //한 페이지에 보여줄 개수
-                  $block_ct = 5; //블록당 보여줄 페이지 개수
+                  $list = 3; //한 페이지에 보여줄 개수
+                  $block_ct = 3; //블록당 보여줄 페이지 개수
 
                   $block_num = ceil($page/$block_ct); // 현재 페이지 블록 구하기
                   $block_start = (($block_num - 1) * $block_ct) + 1; // 블록의 시작번호
@@ -218,7 +214,7 @@
       <button id="b_searchBtn">검색</button>
     </form>
     <!-- 2022.11.06 컬럼정렬 추가 -->
-    <form action="/" method="get" id="sortForm">
+    <form action="/pajji/board/index.php" method="get" id="sortForm">
       <input type="hidden" name="column" id="column" value="" />
       <input type="hidden" name="sortType" id="sortType" value="desc" />
     </form>
