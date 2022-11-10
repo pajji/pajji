@@ -1,15 +1,9 @@
 <?php
-require_once('db.php');
+require_once('lib/top.php');
 ?>
-<!doctype html>
-<head>
-<meta charset="UTF-8">
-<title>게시판</title>
-<link rel="stylesheet" type="text/css" href="/Github/pajji/board/css/style.css" />
-</head>
 <body>
 <div id="board_area">
-  <h1><a href="/Github/pajji/board/index.php">자유게시판</a></h1>
+  <h1><a href="/pajji/board/index.php">자유게시판</a></h1>
   <h4>자유롭게 글을 쓸 수 있는 게시판입니다.</h4>
     <table class="list-table">
       <thead>
@@ -136,7 +130,7 @@ require_once('db.php');
             <?php
               $lockimg = "<img src='/pajji/board/img/lock.png' alt='lock' title='lock' with='20' height='20' />";
               if($board['lock_post']=="1")
-              { ?><a href='/pajji/board/page/board/ck_read.php?idx=<?php echo $board["idx"];?>'><?php echo $title, $lockimg;
+              { ?><a href='/pajji/board/ck_read.php?idx=<?php echo $board["idx"];?>'><?php echo $title, $lockimg;
               }else{?>
 
         <!-- 추가부분 18.08.01 -->
@@ -151,7 +145,7 @@ require_once('db.php');
           }
           ?>
         <!-- 추가부분 18.08.01 END -->
-        <a href='/pajji/board/page/board/read.php?idx=<?php echo $board["idx"]; ?>'><?php echo $title; }?><span class="re_ct">[<?php echo $rep_count;?>] </span></a></td>
+        <a href='/pajji/board/read.php?idx=<?php echo $board["idx"]; ?>'><?php echo $title; }?><span class="re_ct">[<?php echo $rep_count;?>] </span></a></td>
           <td width="120"><?php echo $board['name']?></td>
           <td width="100"><?php echo $board['date']?></td>
           <td width="100"><?php echo $board['hit']; ?></td>
@@ -200,11 +194,11 @@ require_once('db.php');
         ?>
     </div>
 <div id="write_btn">
-      <a href="/pajji/board/page/board/write.php"><button>글쓰기</button></a>
+      <a href="/pajji/board/write.php"><button>글쓰기</button></a>
 </div>
   <!-- 18.10.11 검색 추가 -->
   <div id="search_box">
-    <form action="/pajji/board/page/board/search_result.php" method="get">
+    <form action="/pajji/board/search_result.php" method="get">
       <select name="catgo">
         <option value="title">제목</option>
         <option value="name">글쓴이</option>
