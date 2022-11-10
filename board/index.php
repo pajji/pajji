@@ -1,15 +1,15 @@
 <?php
-  include $_SERVER['DOCUMENT_ROOT']."/pajji/board/db.php";
+require_once('db.php');
 ?>
 <!doctype html>
 <head>
 <meta charset="UTF-8">
 <title>게시판</title>
-<link rel="stylesheet" type="text/css" href="/pajji/board/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/Github/pajji/board/css/style.css" />
 </head>
 <body>
 <div id="board_area">
-  <h1><a href="/pajji/board/index.php">자유게시판</a></h1>
+  <h1><a href="/Github/pajji/board/index.php">자유게시판</a></h1>
   <h4>자유롭게 글을 쓸 수 있는 게시판입니다.</h4>
     <table class="list-table">
       <thead>
