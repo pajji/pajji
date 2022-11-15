@@ -1,9 +1,6 @@
-<!doctype html>
-<head>
-<meta charset="UTF-8">
-<title>게시판</title>
-<link rel="stylesheet" type="text/css" href="/pajji/board/css/style.css" />
-</head>
+<?php
+require_once('lib/top.php');
+?>
 <body>
     <div id="board_write">
         <h1><a href="/pajji/board/index.php">자유게시판</a></h1>

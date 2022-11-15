@@ -1,15 +1,9 @@
 <?php
-  include $_SERVER['DOCUMENT_ROOT']."/pajji/board/db.php";
+require_once('lib/top.php');
 ?>
-<!doctype html>
-<head>
-<meta charset="UTF-8">
-<title>게시판 내 검색</title>
-<link rel="stylesheet" type="text/css" href="/pajji/board/css/style.css" />
-</head>
 <body>
 <div id="board_area">
-<!-- 18.10.11 검색 추가 -->
+<!-- 검색 추가 -->
 <?php
 
   /* 검색 변수 */
@@ -51,19 +45,11 @@
               { ?><a href='/pajji/board/ck_read.php?idx=<?php echo $board["idx"];?>'><?php echo $title, $lockimg;
               }else{?>
 
-        <!--- 추가부분 18.08.01 --->
-        <?php
-          $boardtime = $board['date']; //$boardtime변수에 board['date']값을 넣음
-          $timenow = date("Y-m-d"); //$timenow변수에 현재 시간 Y-M-D를 넣음
-
-          if($boardtime==$timenow){
-            $img = "<img src='/pajji/board/img/new.png' alt='new' title='new' />";
-          }else{
-            $img ="";
-          }
-          ?>
-        <!--- 추가부분 18.08.01 END -->
-        <a href='/pajji/board/read.php?idx=<?php echo $board["idx"]; ?>'><span style="background:yellow;"><?php echo $title; }?></span><span class="re_ct">[<?php echo $rep_count;?>]<?php echo $img; ?> </span></a></td>
+            <?php
+              require_once('lib/new.php');
+            ?>
+        <!--- 읽기 추가 -->
+        <a href='/pajji/boasrd/read.php?idx=<?php echo $board["idx"]; ?>'><span style="background:yellow;"><?php echo $title; }?></span><span class="re_ct">[<?php echo $rep_count;?>]<?php echo $img; ?> </span></a></td>
           <td width="120"><?php echo $board['name']?></td>
           <td width="100"><?php echo $board['date']?></td>
           <td width="100"><?php echo $board['hit']; ?></td>
@@ -73,7 +59,7 @@
 
       <?php } ?>
     </table>
-    <!-- 18.10.11 검색 추가 -->
+    <!-- 검색 추가 -->
     <div id="search_box2">
       <form action="/pajji/board/search_result.php" method="get">
       <select name="catgo">
