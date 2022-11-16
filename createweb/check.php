@@ -1,5 +1,5 @@
 <?php
-  $conn = mysqli_connect("localhost", "root", "p97j01w20*", "login", 3306);
+  $conn = mysqli_connect("127.0.0.1", "root", "p97j01w20*", "login", 3306);
 	$uid = $_GET["username"];
   $select_query = "SELECT * FROM users WHERE username ='{$uid}'";
 	$result =mysqli_query($conn, $select_query);

@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect("localhost","root","p97j01w20*","login",3306);
+$conn = mysqli_connect("127.0.0.1","root","p97j01w20*","login",3306);
 $hashedPassword = MD5($_POST['password']);
 echo $hashedPassword;
 $sql = "INSERT INTO users (username, password, address, created)

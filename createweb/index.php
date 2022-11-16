@@ -4,12 +4,18 @@ require_once('lib/top.php');
 ?>
 </head>
 <body>
-    <ul class="nav justify-content-center">
+<style>
+  ul {text-align: center;}
+  li {margin: 20px 10px;}
+</style>
+    <ul>
         <?php
         if (isset($_SESSION['username'])) {
             echo "{$_SESSION['username']}님 환영합니다.";
-        ?>
-          <li class="nav-item d-flex align-items-center" onclick="logout()">&nbsp; 로그아웃</li>
+        ?><br/>
+          <a href="logoutprocess.php">로그아웃<br/>
+          <a href="editinfo.php">회원정보수정<br/>
+          <a href=".php">회원탈퇴<br/>
         <?php
         } else {
         ?>
@@ -23,15 +29,5 @@ require_once('lib/top.php');
         }
         ?>
     </ul>
-    <script>
-        function logout() {
-            console.log("hello");
-            const data = confirm("로그아웃 하시겠습니까?");
-            if (data) {
-                location.href = "logoutprocess.php";
-            }
-
-        }
-    </script>
 </body>
 </html>
