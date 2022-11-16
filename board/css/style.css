@@ -25,12 +25,12 @@ ul li {
 /* 게시판 목록 */
 #board_area {
 	width: 900px;
-	position: relative;	
+	position: relative;
 }
 .list-table {
 	margin-top: 40px;
 	position: relative;
-	
+
 }
 .list-table thead th{
 	height:40px;
@@ -43,7 +43,7 @@ ul li {
 	text-align:center;
 	padding:10px 0;
 	border-bottom:1px solid	 #CCC; height:20px;
-	font-size: 14px 
+	font-size: 14px
 }
 #write_btn {
 	position: absolute;
@@ -60,12 +60,12 @@ ul li {
 	margin-top: 30px;
 }
 #page_num a {
-	margin-left: 15px; 
+	margin-left: 15px;
 }
 .fo_re {
 	font-weight: bold;
 	color:red;
-	margin-left: 15px; 
+	margin-left: 15px;
 }
 #search_box {
 	margin-top:30px;
@@ -74,7 +74,7 @@ ul li {
 #search_box2 {
 	text-align: center;
 	margin-top: 30px;
-	
+
 }
 /* 게시판 글쓰기 */
 #board_write {
@@ -177,7 +177,7 @@ ul li {
 /* 댓글 */
 .reply_view {
 	width:900px;
-	margin-top:100px; 
+	margin-top:100px;
 	word-break:break-all;
 }
 .dap_lo {
@@ -197,7 +197,7 @@ ul li {
 }
 .dat_delete {
 	display: none;
-}	
+}
 .dat_edit {
 	display:none;
 }
@@ -220,7 +220,7 @@ ul li {
 }
 #re_content {
 	width:700px;
-	height: 56px; 
+	height: 56px;
 }
 .dap_ins {
 	margin-top:50px;
@@ -230,8 +230,17 @@ ul li {
 	width:100px;
 	height:56px;
 	font-size:16px;
-	margin-left: 10px; 
+	margin-left: 10px;
 }
 #foot_box {
-	height: 50px; 
+	height: 50px;
+}
+.btn-like .heart-shape {
+    display: inline;
+    color: red;
+}
+
+.btn-like {
+    border: none;
+    background-color: inherit;
 }

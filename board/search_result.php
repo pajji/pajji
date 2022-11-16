@@ -9,9 +9,12 @@ require_once('lib/top.php');
   /* 검색 변수 */
   $catagory = $_GET['catgo'];
   $search_con = $_GET['search'];
+  $start_date = $_GET['date_from'];
+  $end_date = $_GET['date_to'];
 
 ?>
-  <h1><?php echo $catagory; ?>에서 '<?php echo $search_con; ?>'검색결과</h1>
+  <h1><a href="/pajji/board/index.php">자유게시판</a></h1>
+  <h2><?php echo $catagory; ?>에서 '<?php echo $search_con; ?>'검색결과</h2>
   <h4 style="margin-top:30px;"><a href="/pajji/board/index.php">홈으로</a></h4>
     <table class="list-table">
       <thead>
@@ -24,16 +27,18 @@ require_once('lib/top.php');
             </tr>
         </thead>
         <?php
-          $sql2 = mq("select * from board where $catagory like '%$search_con%' order by idx desc");
-          while($board = $sql2->fetch_array()){
-
+          if($start_date && $end_date){
+            $sql2 = "select * from board where created between '$start_date' and '$end_date';";
+          }
+          $sql3 = mq("select * from board where $catagory like '%$search_con%' order by idx desc");
+          while($board = $sql3->fetch_array()){
           $title=$board["title"];
             if(strlen($title)>30)
               {
                 $title=str_replace($board["title"],mb_substr($board["title"],0,30,"utf-8")."...",$board["title"]);
               }
-            $sql3 = mq("select * from reply where con_num='".$board['idx']."'");
-            $rep_count = mysqli_num_rows($sql3);
+            $sql4 = mq("select * from reply where con_num='".$board['idx']."'");
+            $rep_count = mysqli_num_rows($sql4);
         ?>
       <tbody>
         <tr>
@@ -68,6 +73,8 @@ require_once('lib/top.php');
         <option value="content">내용</option>
       </select>
       <input type="text" name="search" size="40" required="required"/> <button>검색</button>
+      <input type="date" name="date_from" />
+      <input type="date" name="date_to" />
     </form>
   </div>
 </div>

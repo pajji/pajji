@@ -61,8 +61,16 @@
                  if($_GET['column']=="hit")
                   echo $sortText;
                  }
-            /* 컬럼정렬 추가 끝 */
             ?>
           </style></th>
+          <th width="100"><a onclick="b_sort('like_count','<?php echo $sortType ?>')" href="#">좋아요<span style="color:red;">
+            <?php
+              if(isset($_GET['column'])){
+                 if($_GET['column']=="like_count")
+                  echo $sortText;
+                 }
+            ?>
+          </style></th>
+          <!--/* 컬럼정렬 추가 끝 */-->
       </tr>
   </thead>

@@ -8,6 +8,8 @@
     </select>
     <input type="text" name="search" size="40" required="required" />
     <button id="b_searchBtn">검색</button>
+    <input type="date" name="date_from"/>
+    <input type="date" name="date_to"/>
   </form>
   <!-- 컬럼정렬 추가 -->
   <form action="/pajji/board/index.php" method="get" id="sortForm">

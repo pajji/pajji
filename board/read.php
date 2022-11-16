@@ -1,6 +1,21 @@
 <?php
 require_once('lib/top.php');
 ?>
+<script>
+function count(type)  {
+  // 결과를 표시할 element
+  const resultElement = document.getElementById('result');
+
+  // 현재 화면에 표시된 값
+  let number = resultElement.innerText;
+  // 더하기
+  if(type === 'plus') {
+    number = parseInt(number) + 1;
+  }
+  // 결과 출력
+  resultElement.innerText = number;
+}
+</script>
 <body>
 	<h1><a href="/pajji/board/index.php">자유게시판</a></h1>
 	<?php
@@ -24,6 +39,17 @@ require_once('lib/top.php');
 			<div id="bo_content">
 				<?php echo nl2br("$board[content]"); ?>
 			</div>
+</div>
+
+	<!-- 좋아요 -->
+
+	<div class="bt_se">
+		<input type='button'
+	       	onclick='count("plus")'
+	       	value='❤️‍🔥'‍/>
+					<div id='result'>0</div>
+	</div>
+
 	<!-- 목록, 수정, 삭제 -->
 	<div id="bo_ser">
 		<ul>
