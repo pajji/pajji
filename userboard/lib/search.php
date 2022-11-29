@@ -1,6 +1,6 @@
 <!-- 검색 추가 -->
 <div id="search_box">
-  <form action="/pajji/freeboard/search_result.php" method="get">
+  <form action="/pajji/userboard/search_result.php" method="get">
     <select name="catgo">
       <option value="title">제목</option>
       <option value="name">글쓴이</option>
@@ -12,7 +12,7 @@
     <input type="date" name="date_to"/>
   </form>
   <!-- 컬럼정렬 추가 -->
-  <form action="/pajji/freeboard/index.php" method="get" id="sortForm">
+  <form action="/pajji/userboard/index.php" method="get" id="sortForm">
     <input type="hidden" name="column" id="column" value="" />
     <input type="hidden" name="sortType" id="sortType" value="desc" />
   </form>

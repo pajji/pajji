@@ -3,7 +3,7 @@ require_once('lib/top.php');
 ?>
 <body>
     <div id="board_write">
-        <h1><a href="/pajji/freeboard/index.php">문의게시판</a></h1>
+        <h1><a href="/pajji/userboard/index.php">회원게시판</a></h1>
         <h4>글을 작성하는 공간입니다.</h4>
             <div id="write_area">
                 <form action="write_ok.php" method="post" enctype="multipart/form-data">

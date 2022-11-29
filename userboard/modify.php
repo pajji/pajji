@@ -1,6 +1,6 @@
 <!--- 게시글 수정 -->
 <?php
-	include $_SERVER['DOCUMENT_ROOT']."/pajji/freeboard/db.php";
+	include $_SERVER['DOCUMENT_ROOT']."/pajji/userboard/db.php";
 
 	$bno = $_GET['idx'];
 	$sql = mq("select * from board where idx='$bno';");
@@ -10,11 +10,11 @@
 <head>
 <meta charset="UTF-8">
 <title>게시판</title>
-<link rel="stylesheet" href="/pajji/freeboard/css/style.css" />
+<link rel="stylesheet" href="/pajji/userboard/css/style.css" />
 </head>
 <body>
     <div id="board_write">
-        <h1><a href="/pajji/freeboard/index.php">문의게시판</a></h1>
+        <h1><a href="/pajji/userboard/index.php">문의게시판</a></h1>
         <h4>글을 수정합니다.</h4>
             <div id="write_area">
                 <form action="modify_ok.php/<?php echo $board['idx']; ?>" method="post">

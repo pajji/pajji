@@ -4,7 +4,7 @@
   $timenow = date("Y-m-d"); //$timenow변수에 현재 시간 Y-M-D를 넣음
 
   if($boardtime==$timenow){
-    $img = "<img src='/pajji/freeboard/img/new.png' alt='new' title='new' />";
+    $img = "<img src='/pajji/userboard/img/new.png' alt='new' title='new' />";
   }else{
     $img ="";
   }

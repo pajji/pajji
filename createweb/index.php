@@ -15,7 +15,7 @@ require_once('lib/top.php');
         ?>
         <br/><br/>
           <a href="mypage.php">마이페이지<br/>
-          <a href="/pajji/board/index.php">회원게시판<br/>
+          <a href="/pajji/userboard/index.php">회원게시판<br/>
           <a href="/pajji/freeboard/index.php">문의게시판<br/>
           <a href="logoutprocess.php">로그아웃<br/>
           <a href=".php">회원탈퇴<br/>
@@ -24,7 +24,7 @@ require_once('lib/top.php');
         ?>
         <a href="login.php">로그인<br/>
         <a href="signup.php">회원가입<br/>
-        <a href="/pajji/board/index.php">회원게시판<br/>
+        <a href="/pajji/userboard/index.php">회원게시판<br/>
         <a href="/pajji/freeboard/index.php">문의게시판<br/>
         <?php
         }

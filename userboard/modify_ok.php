@@ -1,5 +1,5 @@
 <?php
-	include $_SERVER['DOCUMENT_ROOT']."/pajji/freeboard/db.php";
+	include $_SERVER['DOCUMENT_ROOT']."/pajji/userboard/db.php";
 
 	$bno = $_POST['idx'];
 	$userpw = password_hash($_POST['pw'], PASSWORD_DEFAULT);
@@ -11,4 +11,4 @@
 	$sql = mq("update board set name='".$_POST['name']."',pw='".$userpw."',title='".$_POST['title']."',content='".$_POST['content']."',lock_post='".$lo_post."' where idx='".$bno."'");
 echo "<script>alert('수정되었습니다.');</script>";
 ?>
-<meta http-equiv="refresh" content="0 url=/pajji/freeboard/read.php?idx=<?php echo $bno; ?>">
+<meta http-equiv="refresh" content="0 url=/pajji/userboard/read.php?idx=<?php echo $bno; ?>">

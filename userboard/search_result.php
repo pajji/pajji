@@ -13,7 +13,7 @@ require_once('lib/top.php');
   $end_date = $_GET['date_to'];
 
 ?>
-  <h1><a href="/pajji/freeboard/index.php">문의게시판</a></h1>
+  <h1><a href="/pajji/freeboard/index.php">회원게시판</a></h1>
   <h2><?php echo $catagory; ?>에서 '<?php echo $search_con; ?>'검색결과</h2>
   <h4 style="margin-top:30px;"><a href="/pajji/freeboard/index.php">홈으로</a></h4>
     <table class="list-table">

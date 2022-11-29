@@ -1,5 +1,5 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT']."/pajji/freeboard/db.php";
+include $_SERVER['DOCUMENT_ROOT']."/pajji/userboard/db.php";
 
 $rno = $_POST['rno'];
 $sql = mq("select * from reply where idx='".$rno."'");

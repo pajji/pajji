@@ -16,7 +16,7 @@ function count(type)  {
 }
 </script>
 <body>
-	<h1><a href="/pajji/freeboard/index.php">문의게시판</a></h1>
+	<h1><a href="/pajji/userboard/index.php">회원게시판</a></h1>
 	<?php
 		$bno = $_GET['idx']; /* bno함수에 idx값을 받아와 넣음*/
 		$hit = mysqli_fetch_array(mq("select * from board where idx ='".$bno."'"));
@@ -52,7 +52,7 @@ function count(type)  {
 	<!-- 목록, 수정, 삭제 -->
 	<div id="bo_ser">
 		<ul>
-			<li><a href="/pajji/freeboard/index.php">[목록으로]</a></li>
+			<li><a href="/pajji/userboard/index.php">[목록으로]</a></li>
 			<li><a href="modify.php?idx=<?php echo $board['idx']; ?>">[수정]</a></li>
 			<li><a href="delete.php?idx=<?php echo $board['idx']; ?>">[삭제]</a></li>
 		</ul>

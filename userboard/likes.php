@@ -1,5 +1,5 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT']."/pajji/freeboard/db.php"; /* db load */
+include $_SERVER['DOCUMENT_ROOT']."/pajji/userboard/db.php"; /* db load */
 
 $ip = $ip = $_SERVER['REMOTE_ADDR']; // 사용자의 IP주소 가져오기
 $article_id = $_POST['articleId']; // 게시글 아이디

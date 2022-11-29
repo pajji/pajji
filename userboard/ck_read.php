@@ -1,9 +1,9 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT']."/pajji/freeboard/db.php"; /* db load */
+include $_SERVER['DOCUMENT_ROOT']."/pajji/userboard/db.php"; /* db load */
 ?>
-<link rel="stylesheet" type="text/css" href="/pajji/freeboard/css/jquery-ui.css" />
-<script type="text/javascript" src="/pajji/freeboard/js/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="/pajji/freeboard/js/jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css" href="/pajji/userboard/css/jquery-ui.css" />
+<script type="text/javascript" src="/pajji/userboard/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="/pajji/userboard/js/jquery-ui.js"></script>
 <script type="text/javascript">
 	$(function(){
 		$("#writepass").dialog({
