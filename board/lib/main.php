@@ -26,8 +26,6 @@ require_once('lib/new.php');
 <td width="120"><?php echo $board['name']?></td>
 <td width="100"><?php echo $board['date']?></td>
 <td width="100"><?php echo $board['hit']; ?></td>
-<td width="100"><?php echo $board['hit']; ?></td>
-
 
 </tbody>
 <?php } ?>

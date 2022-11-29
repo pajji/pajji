@@ -1,10 +1,10 @@
 <?php
-  $conn = mysqli_connect("localhost", "root", "p97j01w20*", "login", 3306);
+  $conn = mysqli_connect("127.0.0.1", "root", "p97j01w20*", "login", 3306);
 
-  $username = $_POST['username'];
-  $password = $_POST['password'];
+  $username = $_GET['username'];
+  $password = $_GET['password'];
 
-  $sql = "SELECT * FROM users where username = '$username' and password = '$password';";
+  $sql = "SELECT * FROM users where username = '$username' and password = '$password'";
     if($result = mysqli_fetch_array(mysqli_query($conn, $sql))){
       session_start();
       $_SESSION['username'];

@@ -30,7 +30,7 @@ require_once('lib/top.php');
           if($start_date && $end_date){
             $sql2 = "select * from board where created between '$start_date' and '$end_date';";
           }
-          $sql3 = mq("select * from board where $catagory like '%$search_con%' order by idx desc");
+          $sql3 = mq("select * from board where $catagory like '%$search_con%'");
           while($board = $sql3->fetch_array()){
           $title=$board["title"];
             if(strlen($title)>30)

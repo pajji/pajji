@@ -1,8 +1,8 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "p97j01w20*", "login", 3306);
+$conn = mysqli_connect("127.0.0.1", "root", "p97j01w20*", "login", 3306);
 
-$user_id = $_POST['user_id'];
-$user_pw = $_POST['user_pw'];
+$user_id = $_GET['user_id'];
+$user_pw = $_GET['user_pw'];
 
 $sql = "SELECT * FROM users where username='$user_id'";
 $result = mysqli_fetch_array(mysqli_query($conn,$sql));

