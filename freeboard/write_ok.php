@@ -15,7 +15,7 @@ $filename = iconv("UTF-8", "EUC-KR",$_FILES['b_file']['name']);
 $folder = "../../upload/".$filename;
 move_uploaded_file($tmpfile,$folder);
 
-$sql = mq("insert into board(name,pw,title,content,date,lock_post,file) values('".$_POST['name']."','".$userpw."','".$_POST['title']."','".$_POST['content']."','".$date."','".$lo_post."','".$o_name."')");
+$sql = mq("insert into board(name,pw,title,number,content,date,lock_post,file) values('".$_POST['name']."','".$userpw."','".$_POST['title']."','".$_POST['number']."','".$_POST['content']."','".$date."','".$lo_post."','".$o_name."')");
 echo "<script>alert('글쓰기 완료되었습니다.');</script>";
 ?>
 <meta http-equiv="refresh" content="0 url=/pajji/freeboard/index.php" />

@@ -15,6 +15,10 @@ require_once('lib/top.php');
                         <textarea name="name" id="uname" rows="1" cols="55" placeholder="글쓴이" maxlength="100" required></textarea>
                     </div>
                     <div class="wi_line"></div>
+                    <div id="in_name">
+                        <textarea name="number" id="unumber" rows="1" cols="55" placeholder="전화번호" maxlength="100" required></textarea>
+                    </div>
+                    <div class="wi_line"></div>
                     <div id="in_content">
                         <textarea name="content" id="ucontent" placeholder="내용" required></textarea>
                     </div>

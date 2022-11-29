@@ -14,7 +14,7 @@
 </head>
 <body>
     <div id="board_write">
-        <h1><a href="/pajji/userboard/index.php">문의게시판</a></h1>
+        <h1><a href="/pajji/userboard/index.php">회원게시판</a></h1>
         <h4>글을 수정합니다.</h4>
             <div id="write_area">
                 <form action="modify_ok.php/<?php echo $board['idx']; ?>" method="post">
@@ -31,7 +31,7 @@
                         <textarea name="content" id="ucontent" placeholder="내용" required><?php echo $board['content']; ?></textarea>
                     </div>
                     <div id="in_pw">
-                        <input type="password" name="pw" id="upw"  placeholder="비밀번호" required />
+                        <input type="password" name="pw" id="upw"  placeholder="수정할 비밀번호" required />
                     </div>
                     <div id="in_lock">
                         <input type="checkbox" value="1" name="lockpost" />해당글을 잠급니다.

@@ -1,6 +1,8 @@
 <?php
+
 require_once('lib/top.php');
 ?>
+
 <body>
     <div id="board_write">
         <h1><a href="/pajji/userboard/index.php">회원게시판</a></h1>
@@ -12,7 +14,7 @@ require_once('lib/top.php');
                     </div>
                     <div class="wi_line"></div>
                     <div id="in_name">
-                        <textarea name="name" id="uname" rows="1" cols="55" placeholder="글쓴이" maxlength="100" required></textarea>
+                        <input type="hidden" name="name" id="uname" rows="1" cols="55" value="<?=$_SESSION['username']?>"><h2><?=$_SESSION['username']?></h2>
                     </div>
                     <div class="wi_line"></div>
                     <div id="in_content">

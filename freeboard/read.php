@@ -16,7 +16,7 @@ function count(type)  {
 }
 </script>
 <body>
-	<h1><a href="/pajji/freeboard/index.php">문의게시판</a></h1>
+	<h1><a href="/pajji/freeboard/index.php">문의게시판</a></h1></br>
 	<?php
 		$bno = $_GET['idx']; /* bno함수에 idx값을 받아와 넣음*/
 		$hit = mysqli_fetch_array(mq("select * from board where idx ='".$bno."'"));
@@ -27,10 +27,14 @@ function count(type)  {
 	?>
 <!-- 글 불러오기 -->
 <div id="board_read">
-	<h2><?php echo $board['title']; ?></h2>
-		<div id="user_info">
-			<?php echo $board['name']; ?> <?php echo $board['date']; ?> 조회:<?php echo $board['hit']; ?>
+	<h2><?php echo $board['title']; ?></h2><br/>
+		<div id="user_info" align="right";>
+			작성자: <?php echo $board['name']; ?><br/>
+      전화번호: <?php echo $board['number']; ?><br/>
+      작성일: <?php echo $board['date']; ?>
+      조회: <?php echo $board['hit']; ?>
 				<div id="bo_line"></div>
+
 			</div>
 			<div>
 				파일 : <a href="../../upload/<?php echo $board['file'];?>" download><?php echo $board['file']; ?></a>

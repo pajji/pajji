@@ -1,11 +1,11 @@
 <?php
-	include $_SERVER['DOCUMENT_ROOT']."/pajji/freeboard/db.php";
+	include $_SERVER['DOCUMENT_ROOT']."/pajji/userboard/db.php";
 
 	$bno = $_POST['bno'];
 	$userpw = password_hash($_POST['dat_pw'], PASSWORD_DEFAULT);
 	$sql = mq("insert into reply(con_num,name,pw,content) values('".$bno."','".$_POST['dat_user']."','".$userpw."','".$_POST['content']."')");
 ?>
-<script type="text/javascript" src="/pajji/freeboard/js/common.js"></script>
+<script type="text/javascript" src="/pajji/userboard/js/common.js"></script>
 
 	<h3>댓글목록</h3>
 		<?php

@@ -19,29 +19,29 @@ require_once('lib/top.php');
 </script>
 </head>
 <body>
-  <div style="text-align:center">
-  <h1>회원가입</h1>
-  </div>
+  <div style="text-align:center";>
+	<br/><h1>회원가입</h1><br/>
     <form action="signupProcess.php" method="POST" id="signup-form">
-        <div class="w-50 ml-auto mr-auto mt-5">
-        <div class="mb-3 ">
-          <input type="text" name="username" id="username" placeholder="아이디입력">
-					<input type="button" value="중복검사" onclick="checkid();" />
-					<input type="hidden" value="0" name="chs" />
-        </div>
-        <div class="mb-3 ">
-          <input name="password" type="password" class="form-control" id="password" placeholder="비밀번호 입력">
-        </div>
-        <div class="mb-3 ">
-          <input type="password" class="form-control" id="password-check" placeholder="비밀번호 재확인">
-        </div>
-        <div class="mb-3 ">
-          <input class=textform type="text" name="join_addr" id="addr" onclick="address();" placeholder="주소를 검색해주세요." required></p>
-        </div>
-        <div>
+			<div style="margin-left:30px;">
+        <input type="text" name="username" id="username" placeholder="아이디입력">
+				<input type="button" value="중복검사" onclick="checkid();" />
+				<input type="hidden" value="0" name="chs" />
+			</div><br/>
+			<div style="margin-right:30px;">
+				<input type="password" name="password" id="password" placeholder="비밀번호 입력" style="width:200px;">
+			</div><br/>
+			<div style="margin-right:30px;">
+		    <input type="password"  id="password-check" placeholder="비밀번호 재확인" style="width:200px;">
+			</div><br/>
+			<div style="margin-right:50px;">
+        <input type="text" class=textform  name="join_addr" id="addr" onclick="address();" placeholder="주소를 검색해주세요." required>
+			</div><br/>
+			<div>
           <button type="button" id="signup-button" class="btn btn-primary mb-3">회원가입</button>
-        </div>
+			</div>
+		</div>
     </form>
+		</table>
     <script>
         const signupForm = document.querySelector("#signup-form");
         const signupButton = document.querySelector("#signup-button");
