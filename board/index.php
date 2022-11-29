@@ -1,4 +1,5 @@
 <?php require_once('lib/top.php'); ?>
+<a href="/pajji/createweb/index.php"><img src="/pajji/createweb/home.png" alt="홈"></a>
 
 <body>
   <div id="board_area">
