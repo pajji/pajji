@@ -34,7 +34,7 @@ function count(type)  {
     </div>
       <div id="bo_line"></div>
 			<div>
-				파일 : <a href="../../upload/<?php echo $board['file'];?>" download><?php echo $board['file']; ?></a>
+				파일 : <a href="upload/<?php echo $board['file'];?>" download><?php echo $board['file']; ?></a>
 			</div>
 			<div id="bo_content">
 				<?php echo nl2br("$board[content]"); ?>

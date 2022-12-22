@@ -12,7 +12,7 @@ if(isset($_POST['lockpost'])){
 $tmpfile =  $_FILES['b_file']['tmp_name'];
 $o_name = $_FILES['b_file']['name'];
 $filename = iconv("UTF-8", "EUC-KR",$_FILES['b_file']['name']);
-$folder = "../../upload/".$filename;
+$folder = "upload/".$filename;
 move_uploaded_file($tmpfile,$folder);
 
 $sql = mq("insert into board(name,pw,title,content,date,lock_post,file) values('".$_POST['name']."','".$userpw."','".$_POST['title']."','".$_POST['content']."','".$date."','".$lo_post."','".$o_name."')");
